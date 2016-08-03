@@ -59,9 +59,13 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
+  let
+    dx x = toString x
+    dy y = toString y
+  in
     svg [ viewBox "0 0 100 100", width "300px" ]
-      [ rect [ x "10", y "10", width "50", height "30", fill "#ffff00", stroke "#00ffff" ] []
-      , rect [ x "5", y "18", width "20", height "12", fill "#ff00ff" ] []
-      , line [ x1 "25", y1 "24", x2 "100", y2 "24", stroke "#023963" ] []
-      , circle [cx "100", cy "24", r "10", fill "#ffffff", stroke "#000000" ] []
+      [ rect [ x (dx 10), y (dy 10), width "50", height "30", fill "#ffff00", stroke "#00ffff" ] []
+      , rect [ x (dx 5), y (dy 18), width "20", height "12", fill "#ff00ff" ] []
+      , line [ x1 (dx 25), y1 (dy 24), x2 (dx 100), y2 (dy 24), stroke "#023963" ] []
+      , circle [cx (dx 100), cy (dy 24), r "10", fill "#ffffff", stroke "#000000" ] []
       ]
