@@ -60,5 +60,6 @@ view model =
     svg [ viewBox "0 0 100 100", width "300px" ]
       [ rect [ x "10", y "10", width "50", height "30", fill "#ffff00", stroke "#00ffff" ] []
       , rect [ x "5", y "18", width "20", height "12", fill "#ff00ff" ] []
-      , line [ x1 "25", y1 "24", x2 "70", y2 "24", stroke "#023963" ] []
+      , line [ x1 "25", y1 "24", x2 "100", y2 "24", stroke "#023963" ] []
+      , circle [cx "100", cy "24", r "10", fill "#ffffff", stroke "#000000" ] []
       ]
