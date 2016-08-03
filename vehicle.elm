@@ -19,12 +19,14 @@ main =
 -- MODEL
 
 
-type alias Model = Time
+type alias Vehicle = (Int,Int)
+
+type alias Model = (Time, List Vehicle)
 
 
 init : (Model, Cmd Msg)
 init =
-  (0, Cmd.none)
+  ((0, [(0,0)]), Cmd.none)
 
 
 
@@ -39,7 +41,7 @@ update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
     Tick newTime ->
-      (newTime, Cmd.none)
+      ((newTime, snd model), Cmd.none)
 
 
 
