@@ -32,12 +32,12 @@ init : (Model, Cmd Msg)
 init =
    ({ x = 0
     , y = 0
-    , vx = 0
+    , vx = 1
     , vy = 0
     }
    , Cmd.none)
 
-
+dt = 1.0
 
 -- UPDATE
 
@@ -45,12 +45,11 @@ init =
 type Msg
   = Tick Time
 
-
 update : Msg -> Model -> (Model, Cmd Msg)
-update msg model =
+update msg m =
   case msg of
     Tick newTime ->
-      (model, Cmd.none)
+      ({ m | x = m.x + dt * m.vx }, Cmd.none)
 
 
 
@@ -69,7 +68,7 @@ subscriptions model =
 view : Model -> Html Msg
 view m =
   let
-    dx x = toString x
+    dx x = toString (x + m.x)
     dy y = toString y
   in
     svg [ viewBox "0 0 100 100", width "300px" ]
