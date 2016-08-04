@@ -2,7 +2,7 @@ import Html exposing (Html)
 import Html.App as App
 import Svg exposing (..)
 import Svg.Attributes exposing (..)
-import Time exposing (Time, second)
+import Time exposing (Time, second, inSeconds)
 
 
 
@@ -21,12 +21,21 @@ main =
 
 type alias Vehicle = (Int,Int)
 
-type alias Model = (Time, List Vehicle)
-
+type alias Model =
+    { x   : Float
+    , y   : Float
+    , vx  : Float
+    , vy  : Float
+    }
 
 init : (Model, Cmd Msg)
 init =
-  ((0, [(0,0)]), Cmd.none)
+   ({ x = 0
+    , y = 0
+    , vx = 0
+    , vy = 0
+    }
+   , Cmd.none)
 
 
 
@@ -41,7 +50,7 @@ update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
     Tick newTime ->
-      ((newTime, snd model), Cmd.none)
+      (model, Cmd.none)
 
 
 
@@ -58,7 +67,7 @@ subscriptions model =
 
 
 view : Model -> Html Msg
-view model =
+view m =
   let
     dx x = toString x
     dy y = toString y
